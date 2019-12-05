@@ -15,13 +15,13 @@ Changing Hostsubnet
 
 	 
 1- Evacuate every node in the OpenShift Container Platform cluster:
-	for i in $(oc get node -o name); do oc adm drain ${i}; done
+       > for i in $(oc get node -o name); do oc adm drain ${i}; done
 2- Ensure that there aren't any pods in the cluster. Do not continue if there are pods even if they are in Terminating state
-	oc get pod --all-namespaces
+       > oc get pod --all-namespaces
 3- Stop the service in every OpenShift Container Platform - Node, including masters:
-	systemctl stop atomic-openshift-node
+       > systemctl stop atomic-openshift-node
 4- Delete every hostsubnet
-	oc delete hostsubnet --all
+       > oc delete hostsubnet --all
 5- In /etc/origin/master/master-config.yaml modify on every OpenShift Container Platform - Master:
 
 	Raw
